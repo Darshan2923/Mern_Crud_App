@@ -1,7 +1,8 @@
-import express from 'express'
-import mongoose from 'mongoose';
-import cors from 'cors'
-const corapps = cors();
+const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const UserModel = require('./models/Users')
+
 const app = express();
 
 app.use(cors());
