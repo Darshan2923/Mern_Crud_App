@@ -18,4 +18,11 @@ app.post('/createUser', (req, res) => {
         .catch(err => res.json(err))
 })
 
+//Get data from the db
+app.get('/', (req, res) => {
+    UserModel.find({})
+        .then(users => res.json(users))
+        .catch(err => res.json(err))
+})
+
 app.listen(5050, () => console.log("Server is running"))
