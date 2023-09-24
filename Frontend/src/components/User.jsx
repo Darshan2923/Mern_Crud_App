@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios';
 
@@ -10,6 +10,15 @@ const User = () => {
             .then(result => setUsers(result.data))
             .catch(err => console.log(err))
     }, []);
+
+    const handleDelete = (id) => {
+        axios.delete('http://localhost:5050/deleteUser/' + id)
+            .then(res => {
+                console.log(res)
+                window.location.reload()
+            })
+            .catch(err => console.log(err))
+    }
 
     return (
         <div className='d-flex vh-100 bg-success justify-content-center align-items-center'>
@@ -33,7 +42,7 @@ const User = () => {
                                     <td>{user.Age}</td>
                                     <td>
                                         <Link to={`/update/${user._id}`} className='btn btn-success'>Update</Link>
-                                        <button className='btn btn-danger'>Delete</button>
+                                        <button className='btn btn-danger' onClick={(e) => handleDelete(user._id)}>Delete</button>
                                     </td>
                                 </tr>
                             ))

@@ -19,10 +19,27 @@ app.post('/createUser', (req, res) => {
 })
 
 //Get data from the db
-app.get('/', (req, res) => {
-    UserModel.find({})
+app.get('/getUser/:id', (req, res) => {
+    const id = req.params.id;
+    UserModel.findById({ _id: id })
         .then(users => res.json(users))
         .catch(err => res.json(err))
+})
+
+//Update the data
+app.put('/updateUser/:id', (req, res) => {
+    const id = req.params.id;
+    UserModel.findByIdAndUpdate({ _id: id }, { name: req.body.name, email: req.body.email, age: req.body.age })
+        .then(users => res.json(users))
+        .catch(err => res.json(err))
+})
+
+//delete
+app.delete('/deleteUser/:id', (req, res) => {
+    const id = req.params.id;
+    UserModel.findByIdAndDelete({ _id: id })
+        .then(res => res.json(res))
+        .catch(err => res.join(err))
 })
 
 app.listen(5050, () => console.log("Server is running"))
