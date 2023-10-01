@@ -6,6 +6,6 @@ const TaskSchema = new mongoose.Schema({
     priority: String
 })
 
-const TaskModel = mongoose.model("userData", TaskModel);
+const TaskModel = mongoose.model("userData", TaskSchema);
 
 module.exports = TaskModel

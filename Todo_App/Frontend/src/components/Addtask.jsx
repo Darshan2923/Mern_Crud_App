@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
+
 
 const Addtask = () => {
     const [time, setTime] = useState('')
@@ -9,10 +11,15 @@ const Addtask = () => {
 
     const Submit = (e) => {
         e.preventDefault();
-        setTime('');
-        setTask('');
-        setPriority('');
-        navigate('/')
+        axios.post('http://localhost:5052/addTask', { time, task, priority })
+            .then(result => {
+                console.log(result)
+                setTime('');
+                setTask('');
+                setPriority('');
+                navigate('/')
+            })
+            .catch(err => console.log(err))
     }
 
     return (
