@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 
 const Home = () => {
-    const [task, setTask] = useState([]);
+    const [task, setTask] = useState([])
 
     useEffect(() => {
         axios.get('http://localhost:5052/getTask/')
