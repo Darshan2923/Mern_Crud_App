@@ -3,11 +3,10 @@ import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 
 const Home = () => {
-    const { id } = useParams
     const [task, setTask] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:5052/getTask/' + id)
+        axios.get('http://localhost:5052/getTask/')
             .then(result => setTask(result.data))
             .catch(err => console.log(err))
     }, []);

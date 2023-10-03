@@ -18,7 +18,7 @@ app.post('/addTask', (req, res) => {
 })
 
 // Get data from the db
-app.get('/getTask/:id', (req, res) => {
+app.get('/getTask', (req, res) => {
     const id = req.params.id;
     TaskModel.findById(id)
         .then(task => {
