@@ -40,4 +40,12 @@ app.delete('/deleteTask/:id', (req, res) => {
         .catch(err => res.json(err))
 })
 
+//updatetask
+app.put('/updateTask/:id', (req, res) => {
+    const id = req.params.id;
+    TaskModel.findByIdAndUpdate({ _id: id }, { name: req.body.time, email: req.body.task, age: req.body.priority })
+        .then(task => res.json(task))
+        .catch(err => res.json(err))
+})
+
 app.listen(5052, () => console.log("Server is running"))
