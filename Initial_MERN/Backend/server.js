@@ -19,9 +19,9 @@ app.post('/createUser', (req, res) => {
 })
 
 //Get data from the db
-app.get('/getUser/:id', (req, res) => {
-    const id = req.params.id;
-    UserModel.findById({ _id: id })
+app.get('/getUser', (req, res) => {
+    // const id = req.params.id;
+    UserModel.findById({})
         .then(users => res.json(users))
         .catch(err => res.json(err))
 })
@@ -39,7 +39,7 @@ app.delete('/deleteUser/:id', (req, res) => {
     const id = req.params.id;
     UserModel.findByIdAndDelete({ _id: id })
         .then(res => res.json(res))
-        .catch(err => res.join(err))
+        .catch(err => res.json(err))
 })
 
 app.listen(5050, () => console.log("Server is running"))

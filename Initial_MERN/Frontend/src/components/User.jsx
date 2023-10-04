@@ -37,9 +37,9 @@ const User = () => {
                         {
                             users.map((user) => (
                                 <tr>
-                                    <td>{user.Name}</td>
-                                    <td>{user.Email}</td>
-                                    <td>{user.Age}</td>
+                                    <td>{user.name}</td>
+                                    <td>{user.email}</td>
+                                    <td>{user.age}</td>
                                     <td>
                                         <Link to={`/update/${user._id}`} className='btn btn-success'>Update</Link>
                                         <button className='btn btn-danger' onClick={(e) => handleDelete(user._id)}>Delete</button>

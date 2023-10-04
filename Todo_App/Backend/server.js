@@ -19,8 +19,8 @@ app.post('/addTask', (req, res) => {
 
 // Get data from the db
 app.get('/getTask', (req, res) => {
-    const id = req.params.id;
-    TaskModel.findById(id)
+    // const id = req.params.id;
+    TaskModel.find({})
         .then(task => {
             if (!task) {
                 res.status(404).json({ message: "Task not found" });
@@ -28,6 +28,15 @@ app.get('/getTask', (req, res) => {
                 res.json(task);
             }
         })
+        .catch(err => res.json(err))
+})
+
+
+//delete item from database
+app.delete('/deleteTask/:id', (req, res) => {
+    const id = req.params.id;
+    TaskModel.findByIdAndDelete({ _id: id })
+        .then(res => res.json(res))
         .catch(err => res.json(err))
 })
 

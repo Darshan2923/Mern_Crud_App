@@ -11,11 +11,20 @@ const Home = () => {
             .catch(err => console.log(err))
     }, []);
 
+    const handleDelete = (id) => {
+        axios.delete('http://localhost:5052/deleteTask/' + id)
+            .then(res => {
+                console.log(res)
+                window.location.reload()
+            })
+            .catch(err => console.log(err))
+    }
+
     return (
         <div className='d-flex vh-100 bg-whitesmoke justify-content-center align-items-center'>
-            <div className="shadow p-3 mb-5 w-50 bg-white rounded p-3">
+            <div className="shadow p-3 mb-5 w-50 h-50 bg-white rounded p-3 .overflow-auto ">
                 <Link to={`create`} className='btn btn-success'>Add +</Link>
-                <table className='table'>
+                <table className='table .overflow-auto h-50'>
                     <thead>
                         <tr>
                             <th>Time</th>
@@ -28,12 +37,12 @@ const Home = () => {
                         {
                             task.map((t) => (
                                 <tr key={t._id}>
-                                    <td>{t.Time}</td>
-                                    <td>{t.Task}</td>
-                                    <td>{t.Priority}</td>
+                                    <td>{t.time}</td>
+                                    <td>{t.task}</td>
+                                    <td>{t.priority}</td>
                                     <td>
                                         <Link to={`update/${t._id}`} className='btn btn-primary'>Update</Link>
-                                        <button className="btn btn-danger"><i className="fa-solid fa-trash-can"></i></button>
+                                        <button className="btn btn-danger" onClick={(e) => handleDelete(t._id)}><i className="fa-solid fa-trash-can"></i></button>
                                     </td>
                                 </tr>
                             ))
