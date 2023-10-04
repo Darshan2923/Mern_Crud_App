@@ -21,7 +21,7 @@ app.post('/createUser', (req, res) => {
 //Get data from the db
 app.get('/getUser', (req, res) => {
     // const id = req.params.id;
-    UserModel.findById({})
+    UserModel.find({})
         .then(users => res.json(users))
         .catch(err => res.json(err))
 })

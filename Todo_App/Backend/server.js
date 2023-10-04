@@ -31,6 +31,20 @@ app.get('/getTask', (req, res) => {
         .catch(err => res.json(err))
 })
 
+app.get('/getTask/:id', (req, res) => {
+    const id = req.params.id;
+    TaskModel.findById({ _id: id })
+        .then(task => {
+            if (!task) {
+                res.status(404).json({ message: "Task not found" });
+            } else {
+                res.json(task);
+            }
+        })
+        .catch(err => res.status(500).json({ error: err.message }));
+});
+
+
 
 //delete item from database
 app.delete('/deleteTask/:id', (req, res) => {
@@ -43,7 +57,7 @@ app.delete('/deleteTask/:id', (req, res) => {
 //updatetask
 app.put('/updateTask/:id', (req, res) => {
     const id = req.params.id;
-    TaskModel.findByIdAndUpdate({ _id: id }, { name: req.body.time, email: req.body.task, age: req.body.priority })
+    TaskModel.findByIdAndUpdate({ _id: id }, { time: req.body.time, task: req.body.task, priority: req.body.priority })
         .then(task => res.json(task))
         .catch(err => res.json(err))
 })

@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
 
 const Updatetask = () => {
@@ -10,7 +10,7 @@ const Updatetask = () => {
     const navigate = useNavigate()
 
     useEffect(() => {
-        axios.get('http://localhost:5052/getUser/' + id)
+        axios.get('http://localhost:5052/getTask/' + id)
             .then(result => {
                 console.log(result);
                 setTime(result.data.time);

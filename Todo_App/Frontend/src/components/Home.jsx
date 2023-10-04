@@ -41,7 +41,7 @@ const Home = () => {
                                     <td>{t.task}</td>
                                     <td>{t.priority}</td>
                                     <td>
-                                        <Link to={`update/${t._id}`} className='btn btn-primary'>Update</Link>
+                                        <Link to={`updateTask/${t._id}`} className='btn btn-primary'>Update</Link>
                                         <button className="btn btn-danger" onClick={(e) => handleDelete(t._id)}><i className="fa-solid fa-trash-can"></i></button>
                                     </td>
                                 </tr>

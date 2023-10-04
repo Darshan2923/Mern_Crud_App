@@ -6,7 +6,7 @@ const User = () => {
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:5050')
+        axios.get('http://localhost:5050/getUser')
             .then(result => setUsers(result.data))
             .catch(err => console.log(err))
     }, []);
@@ -36,7 +36,7 @@ const User = () => {
                     <tbody>
                         {
                             users.map((user) => (
-                                <tr>
+                                <tr key={user._id}>
                                     <td>{user.name}</td>
                                     <td>{user.email}</td>
                                     <td>{user.age}</td>

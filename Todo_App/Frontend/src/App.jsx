@@ -11,8 +11,8 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path='create' element={<Addtask />} />
-        <Route path='updateTask' element={<Updatetask />} />
+        <Route path='/create' element={<Addtask />} />
+        <Route path='/updateTask/:id' element={<Updatetask />} />
       </Routes>
     </BrowserRouter>
   )
